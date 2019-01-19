@@ -1,6 +1,6 @@
 local currentPath   = (...):gsub('%.init$', '') .. "."
-local SpriteSheet = require string.format("%sSpriteSheet", currentPath)
-local SpriteAnimation = require string.format("%sSpriteAnimation", currentPath)
+local SpriteSheet = require(string.format("%sSpriteSheet", currentPath))
+local SpriteAnimation = require(string.format("%sSpriteAnimation", currentPath))
 
 local function getSpritesheet()
     return SpriteSheet
