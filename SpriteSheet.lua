@@ -1,5 +1,5 @@
 local currentPath   = (...):gsub('%.SpriteSheet$', '') .. "."
-local Stack = require string.format("%sStack", currentPath);
+local Stack = require(string.format("%sStack", currentPath))
 
 local SpriteSheet = {}
 
