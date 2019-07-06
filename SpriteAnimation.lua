@@ -66,7 +66,7 @@ function SpriteAnimation:update(dt)
     end
 end
 
-function SpriteAnimation:draw(x, y, rotation, scaleX, scaleY, originX, originY)
+function SpriteAnimation:draw(x, y, scaleX, scaleY, originX, originY, rotation)
     if self.currentFrame.nextFrame ~= self.firstFrame or self.looping then
         local x = x or 300; local y = y or 300
         if self.currentFrame.quad then
