@@ -38,4 +38,4 @@ We still have some other functions for animation, like
 * isOver()
 * nextFrame()
 * update(dt)
-* draw(x, y, scaleX, scaleY, originX, originY)
+* draw(x, y, rotation, scaleX, scaleY, originX, originY)

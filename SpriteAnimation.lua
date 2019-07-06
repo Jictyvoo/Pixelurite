@@ -32,37 +32,26 @@ function SpriteAnimation:load(frameList)
     self.currentFrame = firstFrame
 end
 
-function SpriteAnimation:resetCurrent()
-    self.currentFrame = self.firstFrame
-end
+function SpriteAnimation:resetCurrent() self.currentFrame = self.firstFrame end
 
 function SpriteAnimation:setScale(scaleX, scaleY)
-    if scaleX and scaleY then
-        self.scaleX, self.scaleY = scaleX, scaleY
-    end
+    if scaleX and scaleY then self.scaleX, self.scaleY = scaleX, scaleY end
 end
 
 function SpriteAnimation:setOrigin(originX, originY)
-    if originX and originY then
-        self.originX, self.originY = originX, originY
-    end
+    if originX and originY then self.originX, self.originY = originX, originY end
 end
 
-function SpriteAnimation:setType(looping)
-    self.looping = looping or false
-end
+function SpriteAnimation:setType(looping) self.looping = looping or false end
     
-function SpriteAnimation:setDuration(newDuration)
-    self.duration = newDuration
-end
+function SpriteAnimation:setDuration(newDuration) self.duration = newDuration end
 
 function SpriteAnimation:isOver()
     return self.currentFrame.nextFrame == self.firstFrame and not self.looping
 end
 
 function SpriteAnimation:nextFrame()
-    local frameReturned = self.currentFrame
-    self.currentFrame = self.currentFrame.nextFrame
+    local frameReturned = self.currentFrame; self.currentFrame = self.currentFrame.nextFrame
     return frameReturned.quad
 end
 
@@ -70,20 +59,18 @@ function SpriteAnimation:update(dt)
     if self.currentFrame.nextFrame ~= self.firstFrame or self.looping then
         self.currentTime = self.currentTime + dt
         if self.currentTime >= self.duration then
-            self.currentTime = self.currentTime - self.duration
-            self:nextFrame()
+            self.currentTime = self.currentTime - self.duration; self:nextFrame()
         end
     else
         self.currentTime = 0
     end
 end
 
-function SpriteAnimation:draw(x, y, scaleX, scaleY, originX, originY)
+function SpriteAnimation:draw(x, y, rotation, scaleX, scaleY, originX, originY)
     if self.currentFrame.nextFrame ~= self.firstFrame or self.looping then
-        local x = x or 300
-        local y = y or 300
+        local x = x or 300; local y = y or 300
         if self.currentFrame.quad then
-            love.graphics.draw(self.atlas, self.currentFrame.quad, x, y, 0, scaleX or self.scaleX, scaleY or self.scaleY, originX or self.originX, originY or self.originY)
+            love.graphics.draw(self.atlas, self.currentFrame.quad, x, y, rotation or 0, scaleX or self.scaleX, scaleY or self.scaleY, originX or self.originX, originY or self.originY)
         end
     end
 end
